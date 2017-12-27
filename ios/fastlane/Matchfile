@@ -1,0 +1,4 @@
+type "appstore" # The default type, can be: appstore, adhoc or development
+
+app_identifier "com.slidingpuzzle"
+username "ailton.fabri@kyriostecnologia.com"
