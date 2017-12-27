@@ -57,7 +57,10 @@ class HomeScreen extends Component {
                 <Text style={styles.headerText}>Tempo: {moment(this.state.timer, 'ss').format('mm:ss')}</Text>
                 <Text style={styles.headerText}>Movimentos: {this.state.movements}</Text>
                 <Text style={styles.headerText}>{this.state.headerText}</Text>
-                <SlidePuzzle columns={3} onFinish={() => this.onFinish()} onMove={movements => this.onMove(movements)} />
+                <SlidePuzzle
+                    columns={3}
+                    onFinish={() => this.onFinish()}
+                    onMove={movements => this.onMove(movements)} />
             </View>
         );
     }
