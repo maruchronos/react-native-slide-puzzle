@@ -38,12 +38,13 @@ export default class SlidePuzzle extends Component {
         const boardSize = columns * columns;
 
         // Create ordened array
-        for (let i = 1; i <= boardSize; i++) {
+        for (let i = 1; i < boardSize; i++) {
             board.push(i);
         }
 
         // Shuffle array
         shuffledBoard = this.shuffle(board);
+        shuffledBoard.push(boardSize);
         // shuffledBoard = [8, 5, 1, 4, 7, 3, 2, 9, 6]; caso falho
 
         let fixedArray = [];
@@ -80,12 +81,12 @@ export default class SlidePuzzle extends Component {
         let holeLine = 1;
         for (let i = 0; i < array.length; i++) {
             let inversions = 0;
-            for (let j = 0; j < array.length; j++) {
-                if ((j > i) && (array[j] < array[i])) {
+            for (let j = 0; j < i; j++) {
+                if ((array[j] > array[i])) {
                     inversions++;
                 }
             }
-            console.log(inversions, 'encontradas para ' + array[i]);
+            console.log(`${array[i]} possui ${inversions} inversions`);
             totalInversions += inversions;
             if (array[i] === array.length) {
                 holeLine = parseInt(i / columns, 10) + 1;
@@ -93,7 +94,7 @@ export default class SlidePuzzle extends Component {
         }
         const sum = totalInversions + holeLine;
         console.log(sum, totalInversions, holeLine);
-        return (sum % 2 === 0);
+        return (sum % 2 === columns % 2);
     }
 
     shuffle = (array) => {

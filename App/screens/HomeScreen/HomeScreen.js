@@ -66,7 +66,7 @@ class HomeScreen extends Component {
                 <Text style={styles.headerText}>{this.state.headerText}</Text>
                 <SlidePuzzle
                     ref={(slidePuzzle) => { this.slidePuzzle = slidePuzzle; }}
-                    columns={2}
+                    columns={3}
                     onFinish={() => this.onFinish()}
                     onLoad={movements => this.onLoad(movements)}
                     onMove={movements => this.onMove(movements)} />
