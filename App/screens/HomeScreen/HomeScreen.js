@@ -1,6 +1,6 @@
 // import liraries
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableHighlight } from 'react-native';
 import moment from 'moment';
 import SplashScreen from 'react-native-smart-splash-screen';
 import SlidePuzzle from '../../containers/SlidePuzzle';
@@ -42,6 +42,13 @@ class HomeScreen extends Component {
         });
     }
 
+    onLoad = (movements) => {
+        this.setState({
+            movements,
+            headerText: ''
+        });
+    }
+
     onFinish = () => {
         console.log('Parabéns!', this.props.navigation);
         this.setState({
@@ -58,9 +65,15 @@ class HomeScreen extends Component {
                 <Text style={styles.headerText}>Movimentos: {this.state.movements}</Text>
                 <Text style={styles.headerText}>{this.state.headerText}</Text>
                 <SlidePuzzle
-                    columns={3}
+                    ref={(slidePuzzle) => { this.slidePuzzle = slidePuzzle; }}
+                    columns={2}
                     onFinish={() => this.onFinish()}
+                    onLoad={movements => this.onLoad(movements)}
                     onMove={movements => this.onMove(movements)} />
+
+                <TouchableHighlight onPress={() => this.slidePuzzle.initializeBoard()}>
+                    <Text style={styles.reloadButton}>RELOAD</Text>
+                </TouchableHighlight>
             </View>
         );
     }

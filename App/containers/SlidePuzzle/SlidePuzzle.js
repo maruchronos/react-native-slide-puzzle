@@ -18,13 +18,13 @@ export default class SlidePuzzle extends Component {
         super(props);
         this.state = {
             puzzle: [],
-            movements: 1
+            movements: 0
         };
     }
 
     componentWillMount() {
         this.setState({
-            puzzle: [[4, 3, 6], [1, 8, 5], [2, 7, 9]]
+            puzzle: [[8, 5, 1], [4, 7, 3], [2, 9, 6]]
         });
         this.initializeBoard();
     }
@@ -32,26 +32,68 @@ export default class SlidePuzzle extends Component {
     initializeBoard = () => {
         const { columns } = this.props;
         const board = [];
-        let shufledBoard = [];
+        let shuffledBoard = [];
         let row = [];
         const newBoard = [];
         const boardSize = columns * columns;
+
+        // Create ordened array
         for (let i = 1; i <= boardSize; i++) {
             board.push(i);
         }
-        shufledBoard = this.shuffle(board);
 
+        // Shuffle array
+        shuffledBoard = this.shuffle(board);
+        // shuffledBoard = [8, 5, 1, 4, 7, 3, 2, 9, 6]; caso falho
+
+        let fixedArray = [];
+
+        // Check if array is solveable and fix if its not
+        if (!this.canSolve(shuffledBoard, columns)) {
+            console.log('Board not solveable', shuffledBoard);
+            fixedArray = [shuffledBoard[1], shuffledBoard[0], ...shuffledBoard.slice(2)];
+            console.log('Change first positions', fixedArray);
+        } else {
+            console.log('Board is solveable', shuffledBoard);
+            fixedArray = shuffledBoard;
+        }
+
+        // Create Matrix
         for (let i = 0; i < columns; i++) {
             row = [];
             for (let j = 0; j < columns; j++) {
-                row.push(shufledBoard[(i * columns) + j]);
+                row.push(fixedArray[(i * columns) + j]);
             }
             newBoard.push(row);
         }
 
+
         this.setState({
-            puzzle: newBoard
-        });
+            puzzle: newBoard,
+            movements: 1
+        }, this.props.onLoad(0));
+    }
+
+    canSolve = (array, columns) => {
+        // console.log(array);
+        let totalInversions = 0;
+        let holeLine = 1;
+        for (let i = 0; i < array.length; i++) {
+            let inversions = 0;
+            for (let j = 0; j < array.length; j++) {
+                if ((j > i) && (array[j] < array[i])) {
+                    inversions++;
+                }
+            }
+            console.log(inversions, 'encontradas para ' + array[i]);
+            totalInversions += inversions;
+            if (array[i] === array.length) {
+                holeLine = parseInt(i / columns, 10) + 1;
+            }
+        }
+        const sum = totalInversions + holeLine;
+        console.log(sum, totalInversions, holeLine);
+        return (sum % 2 === 0);
     }
 
     shuffle = (array) => {
