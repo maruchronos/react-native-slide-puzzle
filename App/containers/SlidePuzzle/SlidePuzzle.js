@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
-import { View, Dimensions } from 'react-native';
+import { View, Dimensions, NativeModules, LayoutAnimation } from 'react-native';
 import styles from './styles';
 import PuzzlePiece from '../../components/PuzzlePiece';
 import { colors } from '../../config';
 
 const { width } = Dimensions.get('screen');
 const canvasSize = width - (width / 5);
+
+// const { UIManager } = NativeModules;
+// UIManager.setLayoutAnimationEnabledExperimental &&
+//     UIManager.setLayoutAnimationEnabledExperimental(true);
 
 export default class SlidePuzzle extends Component {
     static defaultProps = {
@@ -165,6 +169,7 @@ export default class SlidePuzzle extends Component {
 
         if (moved) {
             this.setState({ puzzle: puzzleCopy, movements: (movements + 1) });
+            // LayoutAnimation.easeInEaseOut();
             this.props.onMove(this.state.movements);
         }
 

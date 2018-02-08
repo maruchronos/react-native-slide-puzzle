@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "845833668401",
+    "firebase_url": "https://app2sales-feedback-system.firebaseio.com",
+    "project_id": "app2sales-feedback-system",
+    "storage_bucket": "app2sales-feedback-system.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:845833668401:android:785c0baeaa49f34f",
+        "android_client_info": {
+          "package_name": "com.huggy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "845833668401-12a732ap19qn8umgv71lolumkpi6qu1t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAD-EleJ-YB-fEiwaxfgudkZLgy-VjRrDE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:845833668401:android:8b4a007440921957",
+        "android_client_info": {
+          "package_name": "com.slidingpuzzle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "845833668401-12a732ap19qn8umgv71lolumkpi6qu1t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAD-EleJ-YB-fEiwaxfgudkZLgy-VjRrDE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

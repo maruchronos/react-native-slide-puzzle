@@ -9,11 +9,15 @@ import { images } from '../../config';
 
 // create a component
 class HomeScreen extends Component {
-    static navigationOptions = () => ({
-        header: null,
-        tabBarIcon: ({ tintColor }) =>
-            (<Image source={images.homeIcon} style={[styles.icon, { tintColor }]} />)
-    });
+    static navigationOptions = (props) => {
+        console.log('homeScreen props', props);
+        return ({
+            header: null,
+            tabBarVisible: false,
+            tabBarIcon: ({ tintColor }) =>
+                (<Image source={images.homeIcon} style={[styles.icon, { tintColor }]} />)
+        });
+    }
 
     constructor(props) {
         super(props);

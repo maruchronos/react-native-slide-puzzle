@@ -13,6 +13,7 @@ const MainTabNavigator = TabNavigator(
     {
         tabBarComponent: TabBarTop,
         tabBarPosition: 'bottom',
+        tabBar: null,
         tabBarOptions: {
             showIcon: true,
             showLabel: true,

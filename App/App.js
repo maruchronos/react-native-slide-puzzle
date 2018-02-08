@@ -1,9 +1,11 @@
-import React from 'react';
-import { Text } from 'react-native';
+import React, { Component } from 'react';
+import { Text, View } from 'react-native';
 import { setCustomText, setCustomTextInput } from 'react-native-global-props';
+import { App2SalesFeedback } from './components';
 import Router from './router';
 
 Text.defaultProps.allowFontScaling = false;
+const container = { flex: 1 };
 const customTextProps = {
     style: {
         fontSize: 16,
@@ -18,6 +20,24 @@ const customTextInputProps = {
 
 setCustomText(customTextProps);
 setCustomTextInput(customTextInputProps);
-const App = () => <Router />;
 
+
+class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            showFeedback: true
+        };
+    }
+
+    render = () => (
+        <View style={container} >
+            <Router />
+            <App2SalesFeedback
+                onCancel={() => this.setState({ showFeedback: false })}
+                isVisible={this.state.showFeedback}
+                project={'com.slidingpuzzle'} />
+        </View>
+    );
+}
 export default App;

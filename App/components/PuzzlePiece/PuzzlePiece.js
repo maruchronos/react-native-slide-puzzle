@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { TouchableOpacity, Text, ImageBackground } from 'react-native';
+// import CroppingView from 'react-native-cropping';
 import styles from './styles';
 import { images } from '../../config';
 
