@@ -79,7 +79,8 @@ class App2SalesFeedback extends Component {
                             showChangeLog: true
                         });
                     }
-                } else { // in case user never saw any changelog
+                } else if (changelog[0]) { // if there is any log to show
+                    // in case user never saw any changelog
                     this.setState({
                         hasChangeLog: true,
                         showChangeLog: true,
