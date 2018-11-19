@@ -1,6 +1,11 @@
 
 import React from 'react';
-import { TouchableOpacity, Text, ImageBackground } from 'react-native';
+import {
+    View,
+    TouchableOpacity,
+    Text,
+    ImageBackground
+} from 'react-native';
 // import CroppingView from 'react-native-cropping';
 import styles from './styles';
 import { images } from '../../config';
@@ -35,8 +40,11 @@ const PuzzlePiece = ({
                     right: pieceSize
                 }}
                 onPress={() => handlePress(line, column)} >
-                {showNumbers ?
-                    (<Text style={[styles.number, { color: numberColor }]}>{number}</Text>) : null
+                {showNumbers ? (
+                    <View style={styles.numberContainer}>
+                        <Text style={[styles.number, { color: numberColor }]}>{number}</Text>
+                    </View>
+                ) : null
                 }
             </TouchableOpacity>
         </ImageBackground>

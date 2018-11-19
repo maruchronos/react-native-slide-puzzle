@@ -230,7 +230,7 @@ export default class SlidePuzzle extends Component {
 
     render() {
         return (
-            <View style={[styles.canvas, { width: canvasSize, height: canvasSize }]}>
+            <View style={[styles.canvas, { width: canvasSize + 2, height: canvasSize + 2 }]}>
                 {this._loadBoard()}
             </View>
         );

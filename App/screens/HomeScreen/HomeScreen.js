@@ -1,11 +1,12 @@
 // import liraries
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableHighlight } from 'react-native';
+import { View, Text, Image, StatusBar } from 'react-native';
 import moment from 'moment';
 import SplashScreen from 'react-native-smart-splash-screen';
 import SlidePuzzle from '../../containers/SlidePuzzle';
+import { Button, Display } from '../../components';
 import styles from './style';
-import { images } from '../../config';
+import { images, colors } from '../../config';
 
 // create a component
 class HomeScreen extends Component {
@@ -24,7 +25,8 @@ class HomeScreen extends Component {
         this.state = {
             headerText: '',
             movements: 0,
-            timer: 0
+            timer: 50,
+            showNumbers: false
         };
     }
 
@@ -36,7 +38,10 @@ class HomeScreen extends Component {
         });
 
         this.timerController = setInterval(() => {
-            this.setState({ timer: (this.state.timer + 1) });
+            let timer = this.state.timer + 1;
+            timer = moment(timer, 'seconds').format('mm:ss');
+            console.log(timer);
+            this.setState({ timer });
         }, 1000);
     }
 
@@ -49,6 +54,7 @@ class HomeScreen extends Component {
     onLoad = (movements) => {
         this.setState({
             movements,
+            timer: 0,
             headerText: ''
         });
     }
@@ -63,21 +69,45 @@ class HomeScreen extends Component {
     }
 
     render() {
+        const {
+            showNumbers,
+            timer,
+            movements,
+            headerText
+        } = this.state;
         return (
             <View style={styles.container}>
-                <Text style={styles.headerText}>Tempo: {moment(this.state.timer, 'ss').format('mm:ss')}</Text>
-                <Text style={styles.headerText}>Movimentos: {this.state.movements}</Text>
-                <Text style={styles.headerText}>{this.state.headerText}</Text>
-                <SlidePuzzle
-                    ref={(slidePuzzle) => { this.slidePuzzle = slidePuzzle; }}
-                    columns={3}
-                    onFinish={() => this.onFinish()}
-                    onLoad={movements => this.onLoad(movements)}
-                    onMove={movements => this.onMove(movements)} />
-
-                <TouchableHighlight onPress={() => this.slidePuzzle.initializeBoard()}>
-                    <Text style={styles.reloadButton}>RELOAD</Text>
-                </TouchableHighlight>
+                <StatusBar backgroundColor={colors.backgroundScreens} barStyle={'light-content'} />
+                <Text style={styles.mainTitle}>React Native Sliding Puzzle</Text>
+                <View style={styles.divider} />
+                <View style={styles.displayContainer}>
+                    <Display
+                        label={'Movements'}
+                        value={movements} />
+                    <Display
+                        label={'Time'}
+                        value={timer} />
+                </View>
+                <Text style={styles.headerText}>{headerText}</Text>
+                <View style={styles.puzzleContainer}>
+                    <SlidePuzzle
+                        ref={(slidePuzzle) => { this.slidePuzzle = slidePuzzle; }}
+                        columns={3}
+                        showNumbers={showNumbers}
+                        onFinish={() => this.onFinish()}
+                        onLoad={moves => this.onLoad(moves)}
+                        onMove={moves => this.onMove(moves)} />
+                </View>
+                <View style={styles.buttons}>
+                    <Button
+                        title={'RELOAD'}
+                        action={() => this.slidePuzzle.initializeBoard()} />
+                    <Button
+                        title={'NUMBERS'}
+                        action={() => this.setState({
+                            showNumbers: !this.state.showNumbers
+                        })} />
+                </View>
             </View>
         );
     }

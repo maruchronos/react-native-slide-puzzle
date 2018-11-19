@@ -26,17 +26,17 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showFeedback: true
+            // showFeedback: true
         };
     }
 
     render = () => (
         <View style={container} >
             <Router />
-            <App2SalesFeedback
+            {/* <App2SalesFeedback
                 onCancel={() => this.setState({ showFeedback: false })}
                 isVisible={this.state.showFeedback}
-                project={'com.slidingpuzzle'} />
+                project={'com.slidingpuzzle'} /> */}
         </View>
     );
 }
