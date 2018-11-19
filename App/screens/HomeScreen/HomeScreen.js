@@ -80,8 +80,11 @@ class HomeScreen extends Component {
                 <StatusBar backgroundColor={colors.backgroundScreens} barStyle={'light-content'} />
                 <Text style={styles.mainTitle}>React Native Sliding Puzzle</Text>
                 <View style={styles.divider} />
+
+                {/* Displays */}
                 <View style={styles.displayContainer}>
                     <Display
+                        containerStyle={styles.firstButton}
                         label={'Movements'}
                         value={movements} />
                     <Display
@@ -89,6 +92,8 @@ class HomeScreen extends Component {
                         value={timer} />
                 </View>
                 <Text style={styles.headerText}>{headerText}</Text>
+
+                {/* Main Canvas */}
                 <View style={styles.puzzleContainer}>
                     <SlidePuzzle
                         ref={(slidePuzzle) => { this.slidePuzzle = slidePuzzle; }}
@@ -98,6 +103,8 @@ class HomeScreen extends Component {
                         onLoad={moves => this.onLoad(moves)}
                         onMove={moves => this.onMove(moves)} />
                 </View>
+
+                {/* Buttons */}
                 <View style={styles.buttons}>
                     <Button
                         containerStyle={styles.firstButton}

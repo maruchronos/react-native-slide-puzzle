@@ -5,7 +5,7 @@ import styles from './styles';
 
 // create a dumb component
 const Display = props => (
-    <View style={styles.container}>
+    <View style={[styles.container, props.containerStyle || null]}>
         <Text style={styles.label}>{props.label}</Text>
         <Text style={styles.value}>{props.value}</Text>
     </View>

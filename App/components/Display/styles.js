@@ -1,9 +1,22 @@
-import { colors, globalStyles } from '../../config';
+import { colors } from '../../config';
 
 const styles = {
-    ...globalStyles,
     container: {
+        backgroundColor: colors.backgroundCanvas,
+        padding: 5,
+        borderWidth: 1,
+        borderColor: colors.primary,
         flex: 1
+    },
+    label: {
+        color: colors.primary,
+        fontSize: 12
+    },
+    value: {
+        color: colors.primary,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        fontSize: 24
     }
 };
 export default styles;
