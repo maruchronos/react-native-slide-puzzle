@@ -100,6 +100,7 @@ class HomeScreen extends Component {
                 </View>
                 <View style={styles.buttons}>
                     <Button
+                        containerStyle={styles.firstButton}
                         title={'RELOAD'}
                         action={() => this.slidePuzzle.initializeBoard()} />
                     <Button

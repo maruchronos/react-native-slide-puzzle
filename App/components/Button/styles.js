@@ -5,7 +5,6 @@ const styles = {
         color: colors.white,
         backgroundColor: colors.buttonBg,
         marginTop: 10,
-        marginRight: 10,
         padding: 5,
         borderRadius: 5,
         borderWidth: 1,

@@ -7,7 +7,7 @@ import styles from './styles';
 const Button = props => (
     <View style={styles.reloadContainer}>
         <TouchableHighlight onPress={props.action}>
-            <Text style={styles.reloadButton}>{props.title}</Text>
+            <Text style={[styles.reloadButton, props.containerStyle || null]}>{props.title}</Text>
         </TouchableHighlight>
     </View>
 );

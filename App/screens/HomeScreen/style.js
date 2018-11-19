@@ -36,6 +36,9 @@ const styles = {
         flexDirection: 'row',
         justifyContent: 'space-between'
     },
+    firstButton: {
+        marginRight: 10
+    },
     icon: {
         height: 30,
         width: 30,
