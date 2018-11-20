@@ -43,6 +43,15 @@ const styles = {
         height: 30,
         width: 30,
         resizeMode: 'contain'
+    },
+    versionContainer: {
+        position: 'absolute',
+        bottom: 12,
+        right: 12
+    },
+    version: {
+        color: colors.primary,
+        fontSize: 12
     }
 };
 

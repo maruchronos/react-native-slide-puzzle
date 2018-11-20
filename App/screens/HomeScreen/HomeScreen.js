@@ -1,7 +1,6 @@
 // import liraries
 import React, { Component } from 'react';
 import { View, Text, Image, StatusBar } from 'react-native';
-
 import SplashScreen from 'react-native-smart-splash-screen';
 import SlidePuzzle from '../../containers/SlidePuzzle';
 import { Button, Display } from '../../components';
@@ -37,30 +36,7 @@ class HomeScreen extends Component {
         });
 
         this.timerController = setInterval(() => {
-            let auxSec = this.state.seconds;
-            let auxMin = this.state.minutes;
-            auxSec++;
-
-            // Update Seconds
-            if (auxSec < 10) {
-                auxSec = `0${auxSec}`;
-            } else if (auxSec > 59) {
-                auxMin++;
-                auxSec = '00';
-                // Update minutes
-                if (auxMin < 10) {
-                    auxMin = `0${auxMin}`;
-                } else if (auxMin > 59) {
-                    auxMin = '00';
-                }
-            }
-
-
-            this.setState({
-                timer: `${auxMin}:${auxSec}`,
-                seconds: auxSec,
-                minutes: auxMin
-            });
+            this.updtateTimer();
         }, 1000);
     }
 
@@ -86,6 +62,32 @@ class HomeScreen extends Component {
     onFinish = () => {
         this.setState({
             headerText: 'Parabéns!'
+        });
+    }
+
+    updtateTimer = () => {
+        let auxSec = this.state.seconds;
+        let auxMin = this.state.minutes;
+        auxSec++;
+
+        // Update Seconds
+        if (auxSec < 10) {
+            auxSec = `0${auxSec}`;
+        } else if (auxSec > 59) {
+            auxMin++;
+            auxSec = '00';
+            // Update minutes
+            if (auxMin < 10) {
+                auxMin = `0${auxMin}`;
+            } else if (auxMin > 59) {
+                auxMin = '00';
+            }
+        }
+
+        this.setState({
+            timer: `${auxMin}:${auxSec}`,
+            seconds: auxSec,
+            minutes: auxMin
         });
     }
 
@@ -128,14 +130,19 @@ class HomeScreen extends Component {
                 {/* Buttons */}
                 <View style={styles.buttons}>
                     <Button
+                        icon={'rotate-right'}
                         containerStyle={styles.firstButton}
                         title={'RELOAD'}
                         action={() => this.slidePuzzle.initializeBoard()} />
                     <Button
+                        icon={'eye'}
                         title={'NUMBERS'}
                         action={() => this.setState({
                             showNumbers: !this.state.showNumbers
                         })} />
+                </View>
+                <View style={styles.versionContainer}>
+                    <Text style={styles.version}>maruchronos 2018 - v 1.0.0</Text>
                 </View>
             </View>
         );
