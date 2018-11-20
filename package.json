@@ -10,6 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "lottie-react-native": "^2.5.10",
     "moment": "^2.20.1",
     "react": "16.0.0",
     "react-native": "0.51.0",

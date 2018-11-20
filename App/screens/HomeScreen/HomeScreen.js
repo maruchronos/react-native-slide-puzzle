@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 import { View, Text, Image, StatusBar } from 'react-native';
 import SplashScreen from 'react-native-smart-splash-screen';
 import SlidePuzzle from '../../containers/SlidePuzzle';
-import { Button, Display } from '../../components';
+import { Button, Display, WinModal } from '../../components';
 import styles from './style';
-import { images, colors } from '../../config';
+import { images, colors, anim } from '../../config';
 
 
 // create a component
@@ -24,7 +24,9 @@ class HomeScreen extends Component {
             movements: 0,
             minutes: '00',
             seconds: '00',
-            showNumbers: false
+            showNumbers: false,
+            showModal: true,
+            keepCounting: true
         };
     }
 
@@ -50,22 +52,26 @@ class HomeScreen extends Component {
         });
     }
 
-    onLoad = (movements) => {
+    onLoad = () => {
         this.setState({
-            movements,
+            movements: 0,
             minutes: '00',
             seconds: '00',
-            headerText: ''
+            headerText: '',
+            keepCounting: true
         });
     }
 
     onFinish = () => {
         this.setState({
-            headerText: 'Parabéns!'
+            keepCounting: false,
+            showModal: true
         });
     }
 
     updtateTimer = () => {
+        if (!this.state.keepCounting) return;
+
         let auxSec = this.state.seconds;
         let auxMin = this.state.minutes;
         auxSec++;
@@ -96,7 +102,8 @@ class HomeScreen extends Component {
             showNumbers,
             timer,
             movements,
-            headerText
+            headerText,
+            showModal
         } = this.state;
         return (
             <View style={styles.container}>
@@ -122,8 +129,8 @@ class HomeScreen extends Component {
                         ref={(slidePuzzle) => { this.slidePuzzle = slidePuzzle; }}
                         columns={3}
                         showNumbers={showNumbers}
-                        onFinish={() => this.onFinish()}
-                        onLoad={moves => this.onLoad(moves)}
+                        onFinish={this.onFinish}
+                        onLoad={this.onLoad}
                         onMove={moves => this.onMove(moves)} />
                 </View>
 
@@ -144,6 +151,16 @@ class HomeScreen extends Component {
                 <View style={styles.versionContainer}>
                     <Text style={styles.version}>maruchronos 2018 - v 1.0.0</Text>
                 </View>
+                <WinModal
+                    title={'CONGRATULATIONS!'}
+                    timer={timer}
+                    movements={movements}
+                    visible={showModal}
+                    onClose={() => {
+                        this.setState({ showModal: false });
+                        this.onLoad();
+                    }}
+                    animationSource={anim.trophy} />
             </View>
         );
     }

@@ -7,7 +7,8 @@ const colors = {
     backgroundCanvas: '#00FFFF33',
     primary: '#72F7FF',
     white: '#FFF',
-    buttonBg: '#72F7FF77'
+    buttonBg: '#72F7FF77',
+    overlay: '#00000055'
     // place yours custons colors here
 };
 

@@ -3,6 +3,7 @@ package com.slidingpuzzle;
 import android.support.multidex.MultiDexApplication;
 
 import com.facebook.react.ReactApplication;
+import com.airbnb.android.react.lottie.LottiePackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
 import io.invertase.firebase.RNFirebasePackage;
@@ -30,6 +31,7 @@ public class MainApplication extends MultiDexApplication implements ReactApplica
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new LottiePackage(),
             new RNDeviceInfo(),
             new RNI18nPackage(),
             new RNFirebasePackage(),

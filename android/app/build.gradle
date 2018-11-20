@@ -138,6 +138,7 @@ android {
 }
 
 dependencies {
+    compile project(':lottie-react-native')
     compile project(':react-native-device-info')
     compile project(':react-native-i18n')
     compile(project(':react-native-firebase')) {
@@ -195,7 +196,7 @@ dependencies {
     compile ('com.android.support:support-v13:26.0.2'){
         force = true
     }
-    compile "com.facebook.react:react-native:+"  // From node_modules
+    compile "com.facebook.react:react-native:0"  // From node_modules
     compile 'com.android.support:multidex:1.0.1'
 }
 

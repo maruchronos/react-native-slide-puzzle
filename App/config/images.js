@@ -1,6 +1,7 @@
 const images = {
     // place yours custons images here
     homeIcon: require('../assets/img/home.png'),
+    finished: require('../assets/img/finished.jpg'),
     puzzleImages: [
         require('../assets/img/image1.jpg'),
         require('../assets/img/image2.jpg'),
