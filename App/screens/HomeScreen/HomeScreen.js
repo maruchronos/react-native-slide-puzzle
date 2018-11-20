@@ -23,7 +23,8 @@ class HomeScreen extends Component {
         this.state = {
             headerText: '',
             movements: 0,
-            timer: '00:00',
+            minutes: '00',
+            seconds: '00',
             showNumbers: false
         };
     }
@@ -35,17 +36,36 @@ class HomeScreen extends Component {
             delay: 500
         });
 
-        // this.timerController = new Timer();
-        // this.timerController.start();
-        // this.timerController.addEventListener('secondsUpdated', () => {
-        //     this.setState({
-        //         timer: this.timerController.getTimeValues().toString()
-        //     });
-        // });
+        this.timerController = setInterval(() => {
+            let auxSec = this.state.seconds;
+            let auxMin = this.state.minutes;
+            auxSec++;
+
+            // Update Seconds
+            if (auxSec < 10) {
+                auxSec = `0${auxSec}`;
+            } else if (auxSec > 59) {
+                auxMin++;
+                auxSec = '00';
+                // Update minutes
+                if (auxMin < 10) {
+                    auxMin = `0${auxMin}`;
+                } else if (auxMin > 59) {
+                    auxMin = '00';
+                }
+            }
+
+
+            this.setState({
+                timer: `${auxMin}:${auxSec}`,
+                seconds: auxSec,
+                minutes: auxMin
+            });
+        }, 1000);
     }
 
     componentWillUnmount() {
-        // this.timerController.removeEventListener();
+        this.timerController.removeEventListener();
     }
 
     onMove = (movements) => {
@@ -57,16 +77,16 @@ class HomeScreen extends Component {
     onLoad = (movements) => {
         this.setState({
             movements,
+            minutes: '00',
+            seconds: '00',
             headerText: ''
         });
-        // this.timerController.reset();
     }
 
     onFinish = () => {
         this.setState({
             headerText: 'Parabéns!'
         });
-        // this.timerController.stop();
     }
 
     render() {
