@@ -1,31 +1,29 @@
 // import liraries
 import React, { Component } from 'react';
 import { View, Text, Image, StatusBar } from 'react-native';
-import moment from 'moment';
+
 import SplashScreen from 'react-native-smart-splash-screen';
 import SlidePuzzle from '../../containers/SlidePuzzle';
 import { Button, Display } from '../../components';
 import styles from './style';
 import { images, colors } from '../../config';
 
+
 // create a component
 class HomeScreen extends Component {
-    static navigationOptions = (props) => {
-        console.log('homeScreen props', props);
-        return ({
-            header: null,
-            tabBarVisible: false,
-            tabBarIcon: ({ tintColor }) =>
-                (<Image source={images.homeIcon} style={[styles.icon, { tintColor }]} />)
-        });
-    }
+    static navigationOptions = () => ({
+        header: null,
+        tabBarVisible: false,
+        tabBarIcon: ({ tintColor }) =>
+            (<Image source={images.homeIcon} style={[styles.icon, { tintColor }]} />)
+    });
 
     constructor(props) {
         super(props);
         this.state = {
             headerText: '',
             movements: 0,
-            timer: 50,
+            timer: '00:00',
             showNumbers: false
         };
     }
@@ -37,12 +35,17 @@ class HomeScreen extends Component {
             delay: 500
         });
 
-        this.timerController = setInterval(() => {
-            let timer = this.state.timer + 1;
-            timer = moment(timer, 'seconds').format('mm:ss');
-            console.log(timer);
-            this.setState({ timer });
-        }, 1000);
+        // this.timerController = new Timer();
+        // this.timerController.start();
+        // this.timerController.addEventListener('secondsUpdated', () => {
+        //     this.setState({
+        //         timer: this.timerController.getTimeValues().toString()
+        //     });
+        // });
+    }
+
+    componentWillUnmount() {
+        // this.timerController.removeEventListener();
     }
 
     onMove = (movements) => {
@@ -54,18 +57,16 @@ class HomeScreen extends Component {
     onLoad = (movements) => {
         this.setState({
             movements,
-            timer: 0,
             headerText: ''
         });
+        // this.timerController.reset();
     }
 
     onFinish = () => {
-        console.log('Parabéns!', this.props.navigation);
         this.setState({
             headerText: 'Parabéns!'
         });
-        clearInterval(this.timerController);
-        // this.props.navigation.navigate('LOJA');
+        // this.timerController.stop();
     }
 
     render() {
