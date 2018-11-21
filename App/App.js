@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Text, View } from 'react-native';
 import { setCustomText, setCustomTextInput } from 'react-native-global-props';
 import Router from './router';

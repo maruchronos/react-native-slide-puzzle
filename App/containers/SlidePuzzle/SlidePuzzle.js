@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Dimensions, NativeModules, LayoutAnimation } from 'react-native';
+import { View, Dimensions } from 'react-native';
 import styles from './styles';
 import PuzzlePiece from '../../components/PuzzlePiece';
 import { colors } from '../../config';
