@@ -1,7 +1,5 @@
 import { StackNavigator, TabNavigator, TabBarTop } from 'react-navigation';
-import {
-    HomeScreen
-} from './screens';
+import { HomeScreen } from './screens';
 import { colors } from './config';
 
 const MainTabNavigator = TabNavigator(
