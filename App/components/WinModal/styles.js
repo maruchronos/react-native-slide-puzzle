@@ -50,8 +50,7 @@ const styles = {
     },
     animation: {
         height: 200,
-        width: 200,
-        backgroundColor: 'red'
+        width: 200
     },
     defaultButton: {
         marginLeft: 15,
@@ -77,10 +76,11 @@ const styles = {
     },
     buttonContainer: {
         width: '100%',
-        height: 90
+        flexDirection: 'row'
     },
     buttonStyle: {
-        backgroundColor: colors.backgroundScreens
+        backgroundColor: colors.backgroundScreens,
+        paddingVertical: 10
     }
 };
 

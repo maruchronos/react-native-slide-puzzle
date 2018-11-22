@@ -26,7 +26,7 @@ const styles = {
     puzzleContainer: {
         width: '100%',
         backgroundColor: colors.backgroundCanvas,
-        paddingVertical: 25,
+        paddingVertical: 20,
         alignItems: 'center',
         justifyContent: 'center',
         borderWidth: 1,

@@ -5,10 +5,6 @@ import android.support.multidex.MultiDexApplication;
 import com.facebook.react.ReactApplication;
 import com.airbnb.android.react.lottie.LottiePackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
-import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
-import io.invertase.firebase.RNFirebasePackage;
-import io.invertase.firebase.firestore.RNFirebaseFirestorePackage;
-import io.invertase.firebase.storage.RNFirebaseStoragePackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.reactnativecomponent.splashscreen.RCTSplashScreenPackage;
 import com.facebook.react.ReactNativeHost;
@@ -33,10 +29,6 @@ public class MainApplication extends MultiDexApplication implements ReactApplica
           new MainReactPackage(),
             new LottiePackage(),
             new RNDeviceInfo(),
-            new RNI18nPackage(),
-            new RNFirebasePackage(),
-            new RNFirebaseFirestorePackage(),
-            new RNFirebaseStoragePackage(),
             new VectorIconsPackage(),
             new RCTSplashScreenPackage()
       );

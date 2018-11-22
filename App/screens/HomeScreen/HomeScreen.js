@@ -25,7 +25,7 @@ class HomeScreen extends Component {
             minutes: '00',
             seconds: '00',
             showNumbers: false,
-            showModal: true,
+            showModal: false,
             keepCounting: true
         };
     }
@@ -159,6 +159,7 @@ class HomeScreen extends Component {
                     onClose={() => {
                         this.setState({ showModal: false });
                         this.onLoad();
+                        this.slidePuzzle.initializeBoard();
                     }}
                     animationSource={anim.trophy} />
             </View>
